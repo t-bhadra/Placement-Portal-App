@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-center mb-4">Login</h2>
+
+<form method="POST" class="card p-4 shadow">
+    <label>Email / Username:</label>
+    <input type="text" name="email" class="form-control mb-3" required>
+
+    <label>Password:</label>
+    <input type="password" name="password" class="form-control mb-3" required>
+
+    <label>Select Role:</label>
+    <select name="role" class="form-control mb-3">
+        <option value="admin">Admin</option>
+        <option value="company">Company</option>
+        <option value="student">Student</option>
+    </select>
+
+    <button class="btn btn-dark w-100">Login</button>
+
+    <div class="mt-3 text-center">
+        <a href="/register/student">Register as Student</a> |
+        <a href="/register/company">Register as Company</a>
+    </div>
+</form>
+
+{% endblock %}

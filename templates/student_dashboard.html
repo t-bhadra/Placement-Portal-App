@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="mb-4">Student Dashboard</h2>
+
+<h4>Approved Placement Drives</h4>
+<table class="table table-bordered">
+<tr><th>Job Title</th><th>Description</th><th>Eligibility</th><th>Deadline</th><th>Apply</th></tr>
+
+{% for d in drives %}
+<tr>
+    <td>{{ d[2] }}</td>
+    <td>{{ d[3] }}</td>
+    <td>{{ d[4] }}</td>
+    <td>{{ d[5] }}</td>
+    <td><a href="/student/apply/{{ d[0] }}" class="btn btn-success btn-sm">Apply</a></td>
+</tr>
+{% endfor %}
+</table>
+
+<hr>
+
+<h4>Your Applications</h4>
+<table class="table table-bordered">
+<tr><th>Job</th><th>Status</th></tr>
+{% for a in applied %}
+<tr>
+    <td>{{ a[0] }}</td>
+    <td>{{ a[1] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-center mb-4">Create Placement Drive</h2>
+
+<form method="POST" class="card p-4 shadow">
+    <label>Job Title:</label>
+    <input name="job_title" class="form-control mb-3" required>
+
+    <label>Description:</label>
+    <textarea name="description" class="form-control mb-3" required></textarea>
+
+    <label>Eligibility:</label>
+    <input name="eligibility" class="form-control mb-3" required>
+
+    <label>Deadline:</label>
+    <input type="date" name="deadline" class="form-control mb-3" required>
+
+    <button class="btn btn-primary w-100">Create Drive</button>
+</form>
+
+{% endblock %}

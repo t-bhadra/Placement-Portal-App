@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<h4>Companies Awaiting Approval</h4>
+<table class="table table-bordered">
+    <tr><th>Name</th><th>Email</th><th>Status</th><th>Actions</th></tr>
+
+    {% for c in companies %}
+    {% if c[6] == 'pending' %}
+    <tr>
+        <td>{{ c[1] }}</td>
+        <td>{{ c[2] }}</td>
+        <td>{{ c[6] }}</td>
+        <td>
+            <a href="/admin/approve/company/{{ c[0] }}" class="btn btn-success btn-sm">Approve</a>
+            <a href="/admin/reject/company/{{ c[0] }}" class="btn btn-danger btn-sm">Reject</a>
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+
+<hr>
+
+<h4>Placement Drives (Pending)</h4>
+<table class="table table-bordered">
+<tr><th>Job Title</th><th>Company</th><th>Status</th><th>Action</th></tr>
+
+{% for d in drives %}
+{% if d[6] == 'pending' %}
+<tr>
+    <td>{{ d[2] }}</td>
+    <td>{{ d[1] }}</td>
+    <td>{{ d[6] }}</td>
+    <td><a href="/admin/approve/drive/{{ d[0] }}" class="btn btn-success btn-sm">Approve</a></td>
+</tr>
+{% endif %}
+{% endfor %}
+</table>
+
+<hr>
+
+<h4>All Students</h4>
+<table class="table table-bordered">
+<tr><th>Name</th><th>Email</th><th>Department</th></tr>
+{% for s in students %}
+<tr><td>{{ s[1] }}</td><td>{{ s[2] }}</td><td>{{ s[4] }}</td></tr>
+{% endfor %}
+</table>
+
+<hr>
+
+<h4>All Applications</h4>
+<table class="table table-bordered">
+<tr><th>ID</th><th>Student</th><th>Drive</th><th>Status</th></tr>
+{% for a in applications %}
+<tr>
+    <td>{{ a[0] }}</td>
+    <td>{{ a[1] }}</td>
+    <td>{{ a[2] }}</td>
+    <td>{{ a[3] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

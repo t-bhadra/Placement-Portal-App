@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-center mb-4">Company Registration</h2>
+
+<form method="POST" class="card p-4 shadow">
+
+    {% if message %}
+    <div class="alert alert-info">{{ message }}</div>
+    {% endif %}
+
+    <label>Company Name:</label>
+    <input name="name" class="form-control mb-3" required>
+
+    <label>Email:</label>
+    <input name="email" type="email" class="form-control mb-3" required>
+
+    <label>Password:</label>
+    <input name="password" type="password" class="form-control mb-3" required>
+
+    <label>HR Contact:</label>
+    <input name="hr" class="form-control mb-3" required>
+
+    <label>Website:</label>
+    <input name="website" class="form-control mb-3">
+
+    <button class="btn btn-primary w-100">Register</button>
+</form>
+
+{% endblock %}
