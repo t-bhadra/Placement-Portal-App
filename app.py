@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask import render_template,request,redirect,url_for,session
 from datetime import datetime
 
 app=Flask(__name__)
@@ -40,6 +41,53 @@ class Application(db.Model):
     drive_id=db.Column(db.Integer,db.ForeignKey('placement_drive.drive_id'),nullable=False)
     app_date=db.Column(db.DateTime,default=datetime.utcnow)
     status=db.Column(db.String(50),default='Applied')
+    
+    @app.route('/')
+    def index():
+        return render_template('index.html')
+    
+    @app.route('/registration',methods=["POST","GET"])
+    def registration():
+        if request.method=="POST":
+            username=request.form['username']
+            email=request.form['email']
+            password=request.form['password']
+            role=request.form['role']
+            user=User.query.filter_by(username=username,email=email).first()
+            if user:
+                return redirect(url_for('login'))
+            new_user=User(username=username,email=email,password=password,role=role)
+            db.session.add(new_user)
+            db.session.commit()
+            return redirect(url_for('login'))
+        return render_template('registration.html')
+    
+    @app.route('/login',methods=["POST","GET"])
+    def login():
+        if request.method=="POST":
+            username=request.form['username']
+            password=request.form['password']
+            user=User.query.filter_by(username=username,password=password).first()
+            if user and user.role=="student":
+                return redirect(url_for('student_dashboard'))
+            elif user and user.role=="company":
+                return redirect(url_for('company_dashboard'))
+            elif user and user.role=="admin":
+                return redirect(url_for('admin_dashboard'))
+            return render_template('registration.html',error_message="You are new user. Please register yourself")
+        return render_template('login.html')
+    
+    @app.route('/company_dashboard')
+    def company_dashboard():
+        return render_template('company_dashboard.html')
+    
+    @app.route('/student_dashboard')
+    def student_dashboard():
+        return render_template('student_dashboard.html')
+    
+    @app.route('/admin_dashboard')
+    def admin_dashboard():
+        return render_template('admin_dashboard.html')
 
 if __name__=='__main__':
     with app.app_context():

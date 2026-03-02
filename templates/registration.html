@@ -24,7 +24,7 @@ body {
     height: 100vh;
 }
 
-.login-container{
+.signup-container{
     background-color: #ffffff;
     width: 340px;
     padding: 25px 30px;
@@ -97,20 +97,23 @@ p{
     font-size: 14px;
 }
 </style>
-{% if error_message %}
-{{error_message}}
-{% endif %}
-
 <div class="container">
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="/login" method="post">
+    <div class="signup-container">
+        <h2>Register Here</h2>
+        <form action="/registration" method="post">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="Enter your username" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email" required>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter your password" required>
-            <button type="submit">Login</button>
-            <a href="{{ url_for('registration') }}">New User? Create an account</a>
+            <label for="role">Role</label>
+            <select name="role" id="role">
+                <option value="student">Student</option>
+                <option value="company">Company</option>
+            </select>
+            <button tybe="submit">Sign Up!</button>
+            <a href="{{ url_for('login') }}">Already have an account? Login</a>
 
         </form>
     </div>

@@ -5,8 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style></style>
+<style>
+body {
+    background-color: #eef2f3; /* A soft, light blue-grey */
+    font-family: 'Arial', sans-serif; /* Clean letters, no "fancy tails" on the font */
+}
+
+.form-container {
+    background-color: white;
+    margin: 50px auto;      /* Centers the box and gives it space from the top */
+    padding: 30px;          /* Space inside the box so things aren't squished */
+    border-radius: 15px;    /* Makes the corners look smooth like a tablet */
+    width: 300px;           /* Makes the box a nice, readable width */
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1); /* Adds a tiny shadow to make it "pop" */
+}
+
+.title {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* This targets the boxes you type in */
+input, select {
+    width: 100%;            /* Makes them fill the whole width of the white box */
+    padding: 10px;          /* Makes the typing area taller and easier to click */
+    margin-top: 5px;        /* Space between the label and the box */
+    border: 1px solid #ccc; /* A thin, light line around the box */
+    border-radius: 5px;     /* Slightly rounded corners */
+}
+
+/* This makes the Submit button look like a real button */
+button {
+    background-color: #007bff;
+    color: white;           /* White text on blue */
+    border: none;           /* Remove the ugly default border */
+    padding: 12px;          /* Make the button big enough for a thumb */
+    width: 100%;            /* Stretch it to fit */
+    border-radius: 8px;     /* Round the corners */
+    margin-top: 20px;       /* Space it away from the Gender dropdown */
+    font-weight: bold;      /* Make the word "Submit" stand out */
+    cursor: pointer;        /* Makes the mouse turn into a pointing hand */
+}
+
+/* Bonus: Makes the button change color when you touch it! */
+button:hover {
+    background-color: #0056b3;
+}
+</style>
 <body>
-    
+    <div class="form-container">
+        <h1 class="title">Register Here</h1>
+        <form class="registration-form" action="">
+            <label for="">Full Name</label>
+            <input type="text" name="" id="">
+            <label for="">Email</label>
+            <input type="text" name="" id="">
+            <label for="">Password</label>
+            <input type="text" name="" id="">
+            <label for="">Gender</label>
+            <select name="" id="">
+                <option value="">male</option>
+                <option value="">female</option>
+            </select>
+            <button>Submit</button>
+
+        </form>
+    </div>
 </body>
 </html>
